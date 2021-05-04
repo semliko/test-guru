@@ -1,7 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TestGuru application models
+
+* User
+* Test
+* Question
+* Answer
+* Result
 
 Things you may want to cover:
 
