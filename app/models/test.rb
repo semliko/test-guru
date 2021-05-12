@@ -12,5 +12,6 @@ class Test < ApplicationRecord
                                .where('categories.title' => category_title)
                                .order('tests.id DESC')
                            }
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end
