@@ -8,7 +8,7 @@ class Test < ApplicationRecord
   scope :middle_level, -> { where(level: 2..4) }
   scope :difficult_level, -> { where(level: 5..Float::INFINITY) }
   scope :names, -> { pluc :title }
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   class << self
