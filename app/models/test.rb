@@ -7,11 +7,15 @@ class Test < ApplicationRecord
   scope :simple_level, -> { where(level: 0..1) }
   scope :middle_level, -> { where(level: 2..4) }
   scope :difficult_level, -> { where(level: 5..Float::INFINITY) }
-  scope :sort_by_category, lambda { |category_title|
-                             joins('JOIN categories ON tests.category_id = categories.id')
-                               .where('categories.title' => category_title)
-                               .order('tests.id DESC')
-                           }
+  scope :names, -> { pluc :title }
   validates :title, presence: true, uniqueness: true
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  class << self
+    def sort_by_category(category_title)
+      joins('JOIN categories ON tests.category_id = categories.id')
+        .where('categories.title' => category_title)
+        .order('tests.id DESC')
+    end
+  end
 end
