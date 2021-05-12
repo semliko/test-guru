@@ -12,4 +12,5 @@ class Test < ApplicationRecord
                                .where('categories.title' => category_title)
                                .order('tests.id DESC')
                            }
+  validates :title, presence: true
 end
