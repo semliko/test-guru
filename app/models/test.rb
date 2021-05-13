@@ -10,7 +10,7 @@ class Test < ApplicationRecord
   scope :join_with_categories, lambda { |category_title|
                                  joins('JOIN categories ON tests.category_id = categories.id').where('categories.title' => category_title)
                                }
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_uniqueness_of :title, scope: :level
 
