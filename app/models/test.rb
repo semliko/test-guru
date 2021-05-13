@@ -15,7 +15,7 @@ class Test < ApplicationRecord
     def sort_by_category(category_title)
       join_with_categories
         .where('categories.title' => category_title)
-        .order('tests.id DESC')
+        .order('categories.title ASC')
     end
   end
 end
