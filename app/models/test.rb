@@ -10,6 +10,7 @@ class Test < ApplicationRecord
   scope :join_with_categories, -> { joins('JOIN categories ON tests.category_id = categories.id') }
   validates :title, presence: true
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates_uniqueness_of :title, scope: :level
 
   class << self
     def sort_by_category(category_title)
