@@ -1,7 +1,7 @@
 class Answer < ApplicationRecord
   belongs_to :question
-  validates :body, presence: true
-  validates :number_of_question_answers
+  validate :body, presence: true, before: :create
+  validate :number_of_question_answers, before: :create
   scope :correct_answers, -> { where(correct: true) }
 
   def number_of_question_answers
