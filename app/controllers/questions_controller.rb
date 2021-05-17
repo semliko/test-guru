@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, :set_test, only: %i[show edit update destroy]
+  after_action :send_log_message
 
   # GET /questions or /questions.json
   def index
@@ -65,6 +66,10 @@ class QuestionsController < ApplicationController
 
   def set_test
     @test = @question.test || params[:test_id]
+  end
+
+  def send_log_message
+    logger.info("Action [#{action_name}] was finished")
   end
 
   # Only allow a list of trusted parameters through.

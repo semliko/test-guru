@@ -1,4 +1,14 @@
 <%= form_with(model: test) do |form| %>
+  <div>
+    <%= form.label :title, "Test title"%>
+    <p>
+    <%= form.text_field :title%>
+  </div>
+  <div>
+    <%= form.label :level, "Test level"%>
+    <p>
+    <%= form.text_field :level%>
+  </div>
   <% if test.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(test.errors.count, "error") %> prohibited this test from being saved:</h2>
