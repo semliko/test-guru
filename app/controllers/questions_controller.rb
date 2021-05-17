@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @test = Test.find(params[:test_id])
-    @question = Question.new
+    @question = @test.questions.build
   end
 
   # GET /questions/1/edit
@@ -64,11 +64,11 @@ class QuestionsController < ApplicationController
   end
 
   def set_test
-    @test = @question.test
+    @test = @question.test || params[:test_id]
   end
 
   # Only allow a list of trusted parameters through.
   def question_params
-    params.fetch(:question, {})
+    params.require(:question).permit(:body, :test_id)
   end
 end

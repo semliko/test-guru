@@ -1,4 +1,10 @@
-<%= form_for([@test, @question]) do |form| %>
+<%= form_with model: @question, url: test_questions_path(@test) do |form| %>
+  <div>
+    <%= form.label :body, "Write a question"%>
+    <p>
+    <%= form.text_area :body%>
+    <%= form.hidden_field :test_id, value: @question.test_id %>
+  </div>
   <% if question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -12,6 +18,6 @@
   <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save question"%>
   </div>
 <% end %>
