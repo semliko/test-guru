@@ -15,7 +15,6 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @test = Test.find(params[:test_id])
     @question = @test.questions.build
   end
 
