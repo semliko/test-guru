@@ -1,10 +1,12 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, :set_test, only: %i[show edit update destroy]
+  before_action :set_question, only: %i[show edit update destroy record_not_found]
+  before_action :set_test
   after_action :send_log_message
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /questions or /questions.json
   def index
-    @test = Test.find(params[:test_id])
+    # @test = Test.find(params[:test_id])
     @questions = @test.questions
   end
 
@@ -65,7 +67,11 @@ class QuestionsController < ApplicationController
   end
 
   def set_test
-    @test = @question.test || params[:test_id]
+    @test = if @question
+              @question.test
+            else
+              Test.find(params[:test_id])
+            end
   end
 
   def send_log_message
@@ -75,5 +81,10 @@ class QuestionsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def question_params
     params.require(:question).permit(:body, :test_id)
+  end
+
+  def record_not_found(exception)
+    set_test
+    redirect_to test_questions_path(@test), flash: { error: exception.message }
   end
 end
