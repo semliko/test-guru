@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = @test.questions.build
+    @question = @test.questionsl.new
   end
 
   # GET /questions/1/edit
@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
 
   # POST /questions or /questions.json
   def create
-    @question = @test.questions.build(question_params)
+    @question = @test.questions.new(question_params)
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }

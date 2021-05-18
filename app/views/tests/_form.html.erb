@@ -1,5 +1,11 @@
 <%= form_with(model: test) do |form| %>
   <div>
+    <%= form.label :category %><br>
+    <p>
+    <%= form.collection_select :category_id, Category.all, :id, :title %>
+  </div>
+  <p>
+  <div>
     <%= form.label :title, "Test title"%>
     <p>
     <%= form.text_field :title%>
@@ -24,4 +30,5 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+  <p>
 <% end %>

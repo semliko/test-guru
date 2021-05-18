@@ -19,7 +19,10 @@ class TestsController < ApplicationController
 
   # POST /tests or /tests.json
   def create
+    default_author = User.first
     @test = Test.new(test_params)
+    # needs to be deleted when users and authors functionality will be added to the application.
+    @test.author = default_author
 
     respond_to do |format|
       if @test.save
@@ -68,6 +71,6 @@ class TestsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def test_params
-    params.require(:test).permit(:title, :level)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 end
