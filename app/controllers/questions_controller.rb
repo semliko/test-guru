@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[show edit update destroy record_not_found]
+  before_action :set_question, only: %i[show edit update destroy]
   before_action :set_test
   after_action :send_log_message
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
