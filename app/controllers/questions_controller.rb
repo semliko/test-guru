@@ -6,7 +6,6 @@ class QuestionsController < ApplicationController
 
   # GET /questions or /questions.json
   def index
-    # @test = Test.find(params[:test_id])
     @questions = @test.questions
   end
 
