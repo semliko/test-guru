@@ -61,6 +61,7 @@ class QuestionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_question
     @question = Question.find(params[:id])
+    @question = Question.find 1000
   end
 
   def set_test
@@ -80,7 +81,7 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:body)
   end
 
-  def record_not_found(exception)
-    render json: { error: exception.message }.to_json, status: 404
+  def record_not_found(_exception)
+    render file: "#{Rails.root}/public/404.html", status: 404
   end
 end
