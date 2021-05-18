@@ -19,11 +19,8 @@ class TestsController < ApplicationController
 
   # POST /tests or /tests.json
   def create
-    default_author = User.first
-    @test = Test.new(test_params)
+    @test = User.first.created_tests.new(test_params)
     # needs to be deleted when users and authors functionality will be added to the application.
-    @test.author = default_author
-
     respond_to do |format|
       if @test.save
         format.html { redirect_to @test, notice: 'Test was successfully created.' }
