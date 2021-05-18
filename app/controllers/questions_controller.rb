@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
-  before_action :set_test
+  before_action :set_test, only: %i[index create show destroy update]
   after_action :send_log_message
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = @test.questionsl.new
+    @question = Question.new
   end
 
   # GET /questions/1/edit
@@ -81,7 +81,6 @@ class QuestionsController < ApplicationController
   end
 
   def record_not_found(exception)
-    set_test
-    redirect_to test_questions_path(@test), flash: { error: exception.message }
+    render json: { error: exception.message }.to_json, status: 404
   end
 end

@@ -3,7 +3,6 @@
     <%= form.label :body, "Write a question"%>
     <p>
     <%= form.text_area :body%>
-    <%= form.hidden_field :test_id, value: @question.test_id %>
   </div>
   <% if question.errors.any? %>
     <div id="error_explanation">
