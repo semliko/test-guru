@@ -7,7 +7,9 @@ class TestsController < ApplicationController
   end
 
   # GET /tests/1 or /tests/1.json
-  def show; end
+  def show
+    @questions = @test.questions
+  end
 
   # GET /tests/new
   def new
