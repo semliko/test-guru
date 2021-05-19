@@ -1,0 +1,34 @@
+<%= form_with(model: test) do |form| %>
+  <div>
+    <%= form.label :category %><br>
+    <p>
+    <%= form.collection_select :category_id, Category.all, :id, :title %>
+  </div>
+  <p>
+  <div>
+    <%= form.label :title, "Test title"%>
+    <p>
+    <%= form.text_field :title%>
+  </div>
+  <div>
+    <%= form.label :level, "Test level"%>
+    <p>
+    <%= form.text_field :level%>
+  </div>
+  <% if test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(test.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+        <% test.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <p>
+<% end %>
