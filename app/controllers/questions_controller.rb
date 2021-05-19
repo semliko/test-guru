@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
-  before_action :set_test, only: %i[index create show destroy update]
+  before_action :set_test, only: %i[index create new]
   after_action :send_log_message
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to test_questions_url(@test), notice: 'Question was successfully destroyed.' }
+      format.html { redirect_to test_questions_url(@question.test), notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -61,15 +61,10 @@ class QuestionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_question
     @question = Question.find(params[:id])
-    @question = Question.find 1000
   end
 
   def set_test
-    @test = if @question
-              @question.test
-            else
-              Test.find(params[:test_id])
-            end
+    @test = Test.find(params[:test_id])
   end
 
   def send_log_message
@@ -81,7 +76,7 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:body)
   end
 
-  def record_not_found(_exception)
+  def record_not_found
     render file: "#{Rails.root}/public/404.html", status: 404
   end
 end
