@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def github_url(author, repo)
-    "<a href='#{repo}' target='_blank'>#{author}</a>".html_safe
+    link_to(author, repo, _blank: true)
   end
 end
