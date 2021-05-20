@@ -1,19 +1,19 @@
-<%= form_with(model: test) do |form| %>
+<%= form_with(model: test, local: true) do |form| %>
   <div>
     <%= form.label :category %><br>
     <p>
-    <%= form.collection_select :category_id, Category.all, :id, :title %>
+    <%= form.collection_select :category_id, Category.all, :id, :title, prompt: true %>
   </div>
   <p>
   <div>
-    <%= form.label :title, "Test title"%>
+    <%= form.label :title %>
     <p>
-    <%= form.text_field :title%>
+    <%= form.text_field :title, id: :test_title%>
   </div>
   <div>
-    <%= form.label :level, "Test level"%>
+    <%= form.label :level%>
     <p>
-    <%= form.number_field :level%>
+    <%= form.number_field :level, id: :test_level%>
   </div>
   <% if test.errors.any? %>
     <div id="error_explanation">

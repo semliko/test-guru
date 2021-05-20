@@ -1,4 +1,4 @@
-<%= form_with model: @question, url: test_questions_path(@question.test) do |form| %>
+<%= form_with model:[ @test, @question] do |form| %>
   <div>
     <%= form.label :body, "Write a question"%>
     <p>
