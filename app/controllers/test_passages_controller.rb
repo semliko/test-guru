@@ -5,6 +5,9 @@ class TestPassagesController < ApplicationController
   def result; end
 
   def update
+    @test_passage.accept!(params[:answer_ids])
+
+    redirect_to result_test_passage_path(@test_passage) if @test_passage.compleated?
     render :show
   end
 

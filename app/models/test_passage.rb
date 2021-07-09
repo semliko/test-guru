@@ -9,7 +9,7 @@ class TestPassage < ApplicationRecord
     current_question.nil?
   end
 
-  def accept!(_answer_ids)
+  def accept!(answer_ids)
     self.correct_question += 1 if correct_answer?(answer_ids)
 
     self.current_question = next_question
