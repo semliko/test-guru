@@ -16,6 +16,11 @@ class TestPassage < ApplicationRecord
     save!
   end
 
+  def correct_answers_percentage
+    all_questions = test.questions.count
+    correct_answers.count / all_questions * 100
+  end
+
   private
 
   def before_validation_set_first_question
