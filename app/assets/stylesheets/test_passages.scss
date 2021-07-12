@@ -1,0 +1,13 @@
+// Place all the styles related to the test_passages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.test_result {
+}
+
+#test_failed {
+        color: red;
+}
+
+#test_passed {
+        color: green;
+}

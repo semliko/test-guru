@@ -2,7 +2,7 @@ class Answer < ApplicationRecord
   belongs_to :question
   validates :body, presence: true
   validate :number_of_question_answers, on: :create
-  scope :correct_answers, -> { where(correct: true) }
+  scope :correct, -> { where(correct: true) }
 
   def number_of_question_answers
     existing_answers = question.answers.count

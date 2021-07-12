@@ -1,0 +1,5 @@
+<h1> The <%= @test_passage.test.title  %> The test was Completed! </h1>
+<div class="test_result" id=<%= result_outcome(@test_passage)[:status] %>>
+  <h2> Your score is <%= @test_passage.correct_answers_percentage %>
+  <h2>  <%= result_outcome(@test_passage)[:message] %> </h2>
+</div>
