@@ -18,17 +18,13 @@ class TestPassage < ApplicationRecord
     save!
   end
 
+  def success?
+    correct_answers_percentage >= TEST_PASS_BENCHMARK
+  end
+
   def correct_answers_percentage
     all_questions = test.questions.count
     test.correct_answers.count / all_questions * 100
-  end
-
-  def result_message
-    if correct_answers_percentage >= TEST_PASS_BENCHMARK
-      { message: 'Test passed successfully', status: 'test_passed' }
-    else
-      { message: 'Test failed', status: 'test_failed' }
-    end
   end
 
   private
