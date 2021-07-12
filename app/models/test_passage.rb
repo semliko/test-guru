@@ -5,6 +5,8 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: :create
 
+  TEST_PASS_BENCHMARK = 85
+
   def compleated?
     current_question.nil?
   end
@@ -22,7 +24,7 @@ class TestPassage < ApplicationRecord
   end
 
   def result_message
-    if correct_answers_percentage >= 85
+    if correct_answers_percentage >= TEST_PASS_BENCHMARK
       { message: 'Test passed successfully', status: 'test_passed' }
     else
       { message: 'Test failed', status: 'test_failed' }
