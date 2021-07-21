@@ -15,10 +15,9 @@
         <td><%= test.category.title %></td>
         <td><%= test.title %></td>
         <td>Questions <%= test.questions.count %></td>
-        <td><%= link_to 'Show', test %></td>
-        <td><%= link_to 'Edit', edit_test_path(test) %></td>
-        <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= button_to 'Start', start_test_path(test)%></td>
+        <td><%= link_to 'Show', admin_test_path(test) %></td>
+        <td><%= link_to 'Edit', edit_admin_test_path(test) %></td>
+        <td><%= link_to 'Destroy', admin_test_path(test), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Test', new_test_path %>
+<%= link_to 'New Test', new_admin_test_path %>
