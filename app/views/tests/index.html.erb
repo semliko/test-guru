@@ -4,9 +4,6 @@
 
 <table>
   <thead>
-    <tr>
-      <th colspan="4"></th>
-    </tr>
   </thead>
 
   <tbody>
@@ -15,9 +12,6 @@
         <td><%= test.category.title %></td>
         <td><%= test.title %></td>
         <td>Questions <%= test.questions.count %></td>
-        <td><%= link_to 'Show', test %></td>
-        <td><%= link_to 'Edit', edit_test_path(test) %></td>
-        <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= button_to 'Start', start_test_path(test)%></td>
       </tr>
     <% end %>
@@ -26,4 +20,3 @@
 
 <br>
 
-<%= link_to 'New Test', new_test_path %>
