@@ -4,6 +4,7 @@ class Admin::TestsController < Admin::BaseController
   # GET /tests or /tests.json
   def index
     @tests = Test.all
+    render 'admin/tests/index'
   end
 
   # GET /tests/1 or /tests/1.json
