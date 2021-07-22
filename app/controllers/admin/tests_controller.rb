@@ -26,10 +26,8 @@ class Admin::TestsController < Admin::BaseController
     respond_to do |format|
       if @test.save
         format.html { redirect_to @test, notice: 'Test was successfully created.' }
-        format.json { render :show, status: :created, location: @test }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @test.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +37,8 @@ class Admin::TestsController < Admin::BaseController
     respond_to do |format|
       if @test.update(test_params)
         format.html { redirect_to @test, notice: 'Test was successfully updated.' }
-        format.json { render :show, status: :ok, location: @test }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @test.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,7 +48,6 @@ class Admin::TestsController < Admin::BaseController
     @test.destroy
     respond_to do |format|
       format.html { redirect_to tests_url, notice: 'Test was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
