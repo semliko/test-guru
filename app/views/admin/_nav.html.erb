@@ -1,0 +1,8 @@
+<div class="nav nav-admin">
+  <span class="nav-admin title">TestGuru Admin panel</span>
+
+  <div class="nav-admin user">
+    Welcome, <b class="nav-admin user-email"><%= curent_user.email %></b>Guru |
+    <%= tilnk_to 'Logout', destroy_user_session_path, method: :delete %>
+  </div>
+</div>
