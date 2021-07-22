@@ -23,33 +23,26 @@ class Admin::TestsController < Admin::BaseController
   # POST /tests or /tests.json
   def create
     @test = current_user.created_tests.new(test_params)
-    # needs to be deleted when users and authors functionality will be added to the application.
-    respond_to do |format|
-      if @test.save
-        format.html { redirect_to @test, notice: 'Test was successfully created.' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @test.save
+      redirect_to @test, notice: 'Test was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /tests/1 or /tests/1.json
   def update
-    respond_to do |format|
-      if @test.update(test_params)
-        format.html { redirect_to @test, notice: 'Test was successfully updated.' }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @test.update(test_params)
+      redirect_to @test, notice: 'Test was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /tests/1 or /tests/1.json
   def destroy
     @test.destroy
-    respond_to do |format|
-      format.html { redirect_to tests_url, notice: 'Test was successfully destroyed.' }
-    end
+    redirect_to tests_url, notice: 'Test was successfully destroyed.'
   end
 
   def search
