@@ -1,0 +1,36 @@
+ru:
+  hello: "Привет"
+
+  helpers:
+    submit:
+      test:
+        create: "Создать тест"
+        update: "Обновить тест"
+    label:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Category"
+
+  shared:
+    errors:
+      haeder:
+        few: "Обнаруженно %{count} ошибки"
+        many: "Обнаруженно %{count} ошибок"
+        one: "Обнаруженна %{count} ошибка"
+        other: "Обнаруженно %{count} ошибки"
+
+  tests:
+    index:
+      header: "Доступные тесты"
+
+  test_passages:
+    result:
+        header: "Тест %{title} успешно завершен"
+
+  admin:
+    tests:
+      create:
+        sucess: "Тест был успешно создан."
+      index:
+        header: "Доступные тесты"

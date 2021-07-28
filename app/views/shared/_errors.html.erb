@@ -1,1 +1,13 @@
-error
+<% if resource.errors.any? %>
+  <div>
+    <h2>
+      <%= t('.header', count: resource.errors.count) %>:
+    </h2>
+
+    <ul>
+      <% resource.errors.full_message.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
