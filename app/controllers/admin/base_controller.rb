@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-  #  layout 'admin'
+  layout 'admin_layout'
 
   before_action :authenticate_user!
   before_action :admin_required!
