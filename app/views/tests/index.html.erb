@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('tests.index.header') %></h1>
-<h1>Tests</h1>
+<h1 class="display-4"><%= t('tests.index.header') %></h1>
 
-<table>
+<table class="table">
   <thead>
   </thead>
 
@@ -13,7 +12,7 @@
         <td><%= test.category.title %></td>
         <td><%= test.title %></td>
         <td>Questions <%= test.questions.count %></td>
-        <td><%= button_to 'Start', start_test_path(test)%></td>
+        <td><%= button_to 'Start', start_test_path(test), class: "btn btn-primary"%></td>
       </tr>
     <% end %>
   </tbody>
