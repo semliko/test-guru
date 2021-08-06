@@ -2,7 +2,7 @@ class GitHubClient
   require 'openssl'
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
-  ROOT_ENDPOINT = 'https://api.gihub.com'
+  ROOT_ENDPOINT = 'https://api.github.com'
 
   ACCESS_TOKEN =  ENV['git_hub_token']
 
@@ -12,7 +12,7 @@ class GitHubClient
 
   def create_gist(params)
     @http_client.post('gists') do |request|
-      request.headers['Authorization'] = "tocken #{ACCESS_TOKEN}"
+      request.headers['Authorization'] = "token #{ACCESS_TOKEN}"
       request.headers['Content-Type'] = 'application/json'
       request.body = params.to_json
     end
