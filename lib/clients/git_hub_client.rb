@@ -18,6 +18,13 @@ class GitHubClient
     end
   end
 
+  def all_gists
+    @http_client.get('gists') do |request|
+      request.headers['Authorization'] = "token #{ACCESS_TOKEN}"
+      request.headers['Content-Type'] = 'application/json'
+    end
+  end
+
   private
 
   def setup_http_client
