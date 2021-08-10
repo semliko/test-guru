@@ -4,13 +4,15 @@ class GistQuestionService
     @client = client || GitHubClient.new
   end
 
-  def call(action: nil, question = Question.new)
-    case action
-    when :create
-      create_gist(question)
-    when :all
-      all_gists
-    end
+  def call(args = {action: nil, question: nil})
+    question = args[:question] || Question.new
+    response = case args[:action]
+               when :create
+                 create_gist(question)
+               when :all
+                 all_gists
+               end
+    JSON.parse(response.body)
   end
 
   def create_gist(question)
