@@ -17,7 +17,14 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    result = Gist.new(user_id: current_user.id, question_id: @test_passage.current_question.id)
+    git_question_service = GistQuestionService.new
+    github_gist = git_question_service.create_gist(@test_passage.current_question)
+
+    result = current_user.gists.new(user_id: current_user.id,
+                                    question_id: @test_passage.current_question.id,
+                                    github_gist_id: github_gist['id'],
+                                    url: github_gist['html_url']
+                                   )
 
     flash_option = if result.save!
                      { notice: t('.sucess')}

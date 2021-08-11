@@ -1,29 +1,24 @@
 class GistQuestionService
+  attr_reader :response
 
   def initialize(client: nil)
     @client = client || GitHubClient.new
   end
 
-  def call(args = {action: nil, question: nil})
-    question = args[:question] || Question.new
-    response = case args[:action]
-               when :create
-                 create_gist(question)
-               when :all
-                 all_gists
-               end
-    JSON.parse(response.body)
-  end
-
   def create_gist(question)
     @question = question
     @test = @question.test
-    @client.create_gist(gist_params)
+    @response = @client.create_gist(gist_params)
+    JSON.parse(@response.body)
   end
 
-  def all_gists
-    @client.all_gists&.body
+  def response_body
+    JSON.parse(@response.body)
   end
+
+  #  def all_gists
+  #    @client.all_gists&.body
+  #  end
 
   private
 
