@@ -17,7 +17,7 @@ class Gist < ApplicationRecord
   end
 
   def update_github_gist_url
-    self.update_attribute(:url, @github_gist['url'])
+    self.update_attribute(:url, @github_gist['html_url'])
   end
 
 end

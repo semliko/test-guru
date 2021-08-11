@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_114647) do
+ActiveRecord::Schema.define(version: 2021_08_11_093459) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_114647) do
   end
 
   create_table "gists", force: :cascade do |t|
-    t.string "url"
+    t.string "html_url"
     t.string "github_gist_id"
     t.integer "question_id", null: false
     t.integer "user_id", null: false

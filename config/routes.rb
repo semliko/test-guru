@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'gists/index'
+    get 'gists', to: 'gists#index'
     resources :tests do
       resources :questions, shallow: true do
         resources :answers, shallow: true
