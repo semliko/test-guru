@@ -1,5 +1,4 @@
 class GistQuestionService
-  attr_reader :response
 
   def initialize(client: nil)
     @client = client || GitHubClient.new
@@ -9,11 +8,15 @@ class GistQuestionService
     @question = question
     @test = @question.test
     @response = @client.create_gist(gist_params)
+  end
+
+  def response
     JSON.parse(@response.body)
   end
 
-  def response_body
-    JSON.parse(@response.body)
+  def status
+    byebug
+    response
   end
 
   #  def all_gists
