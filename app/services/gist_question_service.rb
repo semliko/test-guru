@@ -1,6 +1,6 @@
 class GistQuestionService
 
-  SUCESS_STATUSES = %w[Created OK]
+  SUCESS_STATUSES = [200, 201]
 
   def initialize(client: nil)
     @client = client || GitHubClient.new
@@ -17,7 +17,7 @@ class GistQuestionService
   end
 
   def status
-    @response.reason_phrase
+    @response.status
   end
 
   def sucess?
