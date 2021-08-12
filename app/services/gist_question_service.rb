@@ -1,5 +1,7 @@
 class GistQuestionService
 
+  SUCESS_STATUSES = %w[Created OK]
+
   def initialize(client: nil)
     @client = client || GitHubClient.new
   end
@@ -15,13 +17,16 @@ class GistQuestionService
   end
 
   def status
-    byebug
-    response
+    @response.reason_phrase
   end
 
-  #  def all_gists
-  #    @client.all_gists&.body
-  #  end
+  def sucess?
+    SUCESS_STATUSES.include?(status)
+  end
+
+  def all_gists
+    @response = @client.all_gists&.body
+  end
 
   private
 
