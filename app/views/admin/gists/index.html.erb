@@ -18,7 +18,7 @@
         <td><%= link_to gist.html_url, gist.html_url, class: "link-primary" %></td>
 
         <td><%= gist.user.email %></td>
-        <td>Questions <%= gist.question.body[0..25] %></td>
+        <td>Questions <%= gist.question.body.truncate(25) %></td>
         <td><%= link_to 'Question', question_path(gist.question), class: "link-primary"%></td>
       </tr>
     <% end %>
