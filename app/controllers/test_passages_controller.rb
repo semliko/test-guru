@@ -20,7 +20,7 @@ class TestPassagesController < ApplicationController
 
     github_gist = save_gist_on_github
 
-    if github_gist.sucess? && new_gist(github_gist).save!
+    if github_gist.sucess? && new_gist(github_gist.response).save!
       flash_option = ┊{ notice: t('.sucess')}
     else
       flash_option = ┊{ alert: t('.failure')}
