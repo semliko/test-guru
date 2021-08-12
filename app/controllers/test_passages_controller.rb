@@ -17,7 +17,6 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-
     github_gist = save_gist_on_github
 
     if github_gist.sucess? && new_gist(github_gist.response).save!
@@ -32,7 +31,8 @@ class TestPassagesController < ApplicationController
 
   def save_gist_on_github
     git_question_service = GistQuestionService.new
-    github_gist = git_question_service.create_gist(@test_passage.current_question)
+    git_question_service.create_gist(@test_passage.current_question)
+    git_question_service
   end
 
   def new_gist(github_gist)
