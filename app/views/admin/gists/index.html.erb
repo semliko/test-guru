@@ -1,0 +1,28 @@
+
+<h1 class="display-4"><%= "Gits" %></h1>
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+  <thead>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th>Gist HTML URL</th>
+      <th>User email</th>
+      <th>Question body</th>
+      <th>Link</th>
+    </tr>
+    <% @gists.each do |gist| %>
+      <tr>
+        <td><%= link_to gist.html_url, gist.html_url, class: "link-primary" %></td>
+
+        <td><%= gist.user.email %></td>
+        <td>Questions <%= gist.question.body.truncate(25) %></td>
+        <td><%= link_to 'Question', question_path(gist.question), class: "link-primary"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
