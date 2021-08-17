@@ -13,6 +13,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 require("utilities/sorting")
+require("utilities/passwordChecker")
 
 Rails.start()
 Turbolinks.start()
