@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tests</h1>
+<h1><%= t('.header') %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+<table class="table">
+  <tr>
+    <th class="sort-by-title pointer">
+      Title
+      <%= octicon 'arrow-up', class: 'text-success hide' %>
+      <%= octicon 'arrow-down', class: 'text-success hide' %>
+    </th>
+  </tr>
 
   <tbody>
     <% @tests.each do |test| %>
