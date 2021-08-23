@@ -34,9 +34,6 @@ function formInlineHandler(testId) {
     '.form-inline[data-test-id="' + testId + '"]'
   );
 
-  console.log(link);
-  console.log('form-inline-link[data-test-id="' + testId + '"]');
-
   if (formInline.classList.contains("hide")) {
     testTitle.classList.add("hide");
     formInline.classList.remove("hide");
