@@ -6,11 +6,11 @@ ru:
       test:
         create: "Создать тест"
         update: "Обновить тест"
-    label:
-      test:
-        title: "Название"
-        level: "Уровень"
-        category_id: "Category"
+        label:
+          test:
+            title: "Название"
+            level: "Уровень"
+            category_id: "Category"
 
   shared:
     errors:
@@ -27,9 +27,9 @@ ru:
   test_passages:
     result:
       header: "Тест %{title} успешно завершен"
-    gist:
-      sucess: "Gist Успешно сохнанен."
-      failure: "Во время сохранения gist произошла ошибка"
+      gist:
+        sucess: "Gist Успешно сохнанен."
+        failure: "Во время сохранения gist произошла ошибка"
 
   admin:
     tests:
@@ -37,3 +37,5 @@ ru:
         sucess: "Тест был успешно создан."
       index:
         header: "Доступные тесты"
+      form_inline:
+        submit: "OK"

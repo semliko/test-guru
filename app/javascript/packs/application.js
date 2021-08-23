@@ -14,6 +14,7 @@ import "channels"
 
 require("utilities/sorting")
 require("utilities/passwordChecker")
+require("utilities/form_inline")
 
 Rails.start()
 Turbolinks.start()
