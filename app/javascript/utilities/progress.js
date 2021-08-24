@@ -1,9 +1,8 @@
 document.addEventListener("turbolinks:load", function () {
   var progress = document.querySelector(".progress");
-  var progressData = "";
 
   if (progress) {
-    progressData = progress.dataset.currentProgress;
+    var progressData = progress.dataset.currentProgress;
     updateProgress(progressData);
   }
 });
