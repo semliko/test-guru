@@ -27,6 +27,15 @@ class TestPassage < ApplicationRecord
     test.correct_answers.count / all_questions * 100
   end
 
+  def progress
+    questions_ids = test.questions.order(:id).ids
+    questions_length = questions_ids.length
+    current_question_index = questions_ids.find_index(self.current_question.id)
+    questions_to_do_length = questions_ids[current_question_index..-1].length
+    answered_questions = questions_length - questions_to_do_length
+    (answered_questions.to_f / questions_length * 100).to_i
+  end
+
   private
 
   def before_validation_set_first_question
