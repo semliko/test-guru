@@ -1,5 +1,8 @@
 <h1>Passing the test <%= @test_passage.test.title %></h1>
 <p>
+  <%= content_tag :div, @test_passage.progress, class: 'progress', data: { current_progress: @test_passage.progress } do  %>
+    <div class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100"></div>
+  <% end %>
   <%= @test_passage.current_question.body %>
 </p>
 

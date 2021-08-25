@@ -1,0 +1,18 @@
+
+<tr>
+  <td calss="align-middle">
+    <%#= test.title %>
+    <%= content_tag :span, test.title, class: 'test-title', data: { test_id: test.id } %>
+    <%= render 'form_inline', test: test == @test ? @test : test %>
+  </td>
+  <td calss="align-middle"><%= test.category.title %></td>
+  <td calss="align-middle"><%= test.title %></td>
+  <td calss="align-middle">Questions <%= test.questions.count %></td>
+  <td calss="align-middle"><%= link_to 'Show', admin_test_path(test) %></td>
+  <td calss="align-middle">
+    <%= link_to 'Edit', edit_admin_test_path(test),
+      data: { test_id: test.id },
+      class: 'form-inline-link' %>
+  </td>
+  <td calss="align-middle"><%= link_to 'Destroy', admin_test_path(test), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
