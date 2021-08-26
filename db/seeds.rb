@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-users = User.create!([{ first_name: 'Bill', last_name: 'Petrov', email: 'email_one@email.com' }, { first_name: 'John', last_name: 'Fedorov', email: 'email_two@email.com' }])
+users = User.create!([{ first_name: 'Bill', last_name: 'Petrov', email: 'email_one@email.com', password: '12345678' }, { first_name: 'John', last_name: 'Fedorov', email: 'email_two@email.com', password: '12345678' }])
 
 categories = Category.create!([{ title: 'Front-end' }, { title: 'Back-end' }, { title: 'Fullstack' }])
 categories_ids = categories.pluck(:id)
