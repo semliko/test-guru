@@ -3,14 +3,10 @@ if Rails.env.development?
 end
 
 if Rails.env.production?
-  begin
-    ENV["SECRET_KEY_BASE"] = Rails.application.credentials[:secret_key_base]
-    ENV['git_hub_token'] = Rails.application.credentials.git_hub[:git_hub_token]
-    ENV['SMTP_USERNAMNE'] = Rails.application.credentials.gmail[:gmail_username]
-    ENV['SMTP_PASSWORD'] = Rails.application.credentials.gmail[:gmail_password]
-  rescue StandardError => e
-    nil
-  end
+  ENV["SECRET_KEY_BASE"] = Rails.application.credentials[:secret_key_base]
+  ENV['git_hub_token'] = Rails.application.credentials.git_hub[:git_hub_token]
+  ENV['SMTP_USERNAMNE'] = Rails.application.credentials.gmail[:gmail_username]
+  ENV['SMTP_PASSWORD'] = Rails.application.credentials.gmail[:gmail_password]
 end
 
 
