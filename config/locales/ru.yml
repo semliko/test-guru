@@ -39,3 +39,10 @@ ru:
         header: "Доступные тесты"
       form_inline:
         submit: "OK"
+
+  contacts:
+    form:
+      submit: "Отправить"
+    create:
+      success: "Письмо успешно отправлено администратору"
+      error: "Письмо не было отправленно из за ошибки"

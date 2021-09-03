@@ -68,3 +68,12 @@ en:
         header: "Tricky Tests"
       form_inline:
         submit: "OK"
+
+  contacts:
+    form:
+      submit: "Send"
+    create:
+      sucess: "Email is successfully sent to administrator"
+      error: "Sending emeil error"
+
+
