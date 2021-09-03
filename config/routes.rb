@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: [:new, :create, :show]
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
   root 'tests#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
