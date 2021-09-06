@@ -1,8 +1,8 @@
-<%= form_with model:[ @test, @question] do |form| %>
+<%= form_with url: admin_test_questions_path, model:[ @test, @question] do |form| %>
   <div>
     <%= form.label :body, "Write a question"%>
     <p>
-    <%= form.text_area :body%>
+      <%= form.text_area :body%>
   </div>
   <% if question.errors.any? %>
     <div id="error_explanation">

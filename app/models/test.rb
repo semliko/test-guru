@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
-  has_many :test_passages
+  has_many :test_passages, dependent: :destroy
   has_many :users, through: :test_passages
   belongs_to :category
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
@@ -10,8 +10,8 @@ class Test < ApplicationRecord
   scope :middle_level, -> { where(level: 2..4) }
   scope :difficult_level, -> { where(level: 5..Float::INFINITY) }
   scope :join_with_categories, lambda { |category_title|
-                                 joins('JOIN categories ON tests.category_id = categories.id').where('categories.title' => category_title)
-                               }
+    joins('JOIN categories ON tests.category_id = categories.id').where('categories.title' => category_title)
+  }
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
