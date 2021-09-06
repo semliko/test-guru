@@ -15,7 +15,7 @@ class Admin::QuestionsController < ApplicationController
 
   # GET /tests/new
   def new
-    @question = Question.new
+    @question = @test.questions.new
   end
 
   # GET /tests/1/edit
