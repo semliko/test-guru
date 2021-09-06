@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'tests#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :tests, only: :index do
-    resources :questions, shallow: true, except: :index do
+    resources :questions, shallow: true, except: :index, only: [:show, :index] do
       resources :answers, shallow: true, except: :index
     end
     get '/tests/:category/:title', to: 'test#search'
