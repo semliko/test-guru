@@ -66,6 +66,7 @@ en:
         sucess: "Test was successfully created."
       index:
         header: "Tricky Tests"
+        optional_header: "Take a test"
       form_inline:
         submit: "OK"
 

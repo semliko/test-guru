@@ -19,6 +19,7 @@ class Test < ApplicationRecord
     Answer.joins(:question).where('test_id = ?', id).where(correct: true)
   end
 
+
   class << self
     def titles_by_category(category_title)
       join_with_categories(category_title)

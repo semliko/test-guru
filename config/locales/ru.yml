@@ -37,6 +37,7 @@ ru:
         sucess: "Тест был успешно создан."
       index:
         header: "Доступные тесты"
+        optional_header: "Пройти тест"
       form_inline:
         submit: "OK"
 
