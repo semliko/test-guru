@@ -3,6 +3,7 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.all
+    redirect_to new_contact_path
   end
 
   def show
