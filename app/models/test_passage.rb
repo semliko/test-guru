@@ -28,16 +28,7 @@ class TestPassage < ApplicationRecord
   end
 
   def progress
-    if current_question
-      questions_ids = test.questions.order(:id).ids
-      questions_length = questions_ids.length
-      current_question_index = questions_ids.find_index(self.current_question.id)
-      questions_to_do_length = questions_ids[current_question_index..-1].length
-      answered_questions = questions_length - questions_to_do_length
-      (answered_questions.to_f / questions_length * 100).to_i
-    else
-      0
-    end
+    ((test.questions.index(current_question).to_f / test.questions.count.to_f) * 100).to_i
   end
 
   private
