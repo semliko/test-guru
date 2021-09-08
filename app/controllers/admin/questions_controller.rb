@@ -34,7 +34,7 @@ class Admin::QuestionsController < ApplicationController
   # PATCH/PUT /questions/1 or /questions/1.json
   def update
     if @question.update(question_params)
-      redirect_to @question, notice: 'Question was successfully updated.'
+      redirect_to admin_question_path(@question), notice: 'Question was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
