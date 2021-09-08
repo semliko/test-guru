@@ -1,0 +1,28 @@
+
+<%= form_with model: @answer, url: @answer.new_record? ? admin_question_answers_path(@question) : admin_answer_path(@answer), local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :body, "Write an answer body"%>
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+  <div class="form-check">
+    <%= form.label :correct, class: "form-check-label" do %>
+      Correct Answer
+      <%= form.check_box :correct,  input_html: {class: "form-check-input", checked: @answer.correct} %>
+    <% end %>
+  </div>
+  <% if answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+        <% answer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Save answer", class: "btn btn-primary"%>
+  </div>
+<% end %>

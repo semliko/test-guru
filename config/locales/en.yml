@@ -57,7 +57,7 @@ en:
     result:
       header: "Test %{title} successfully compleated"
     gist:
-      sucess: "Gist successfully saved."
+      success: "Gist successfully saved and avalible at %{url}."
       failure: "Error when saving Gist"
 
   admin:
@@ -66,5 +66,15 @@ en:
         sucess: "Test was successfully created."
       index:
         header: "Tricky Tests"
+        optional_header: "Take a test"
       form_inline:
         submit: "OK"
+
+  contacts:
+    form:
+      submit: "Send"
+    create:
+      sucess: "Email is successfully sent to administrator"
+      error: "Sending emeil error"
+
+

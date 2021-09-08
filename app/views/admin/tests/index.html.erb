@@ -3,6 +3,11 @@
 <h1><%= t('.header') %></h1>
 
 <%= render 'shared/errors', resource: @test %>
+<h2>
+  <span class="navbar-text">
+    <%= link_to t('.optional_header'), tests_path, class: 'navbar-brand' %>
+  </span>
+</h2>
 
 <table class="table">
   <tr>

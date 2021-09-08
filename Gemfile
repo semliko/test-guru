@@ -6,8 +6,8 @@ ruby '3.0.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
+gem 'pg'
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
@@ -41,6 +41,8 @@ gem 'bootstrap', '~> 5.0.1'
 # Networking
 
 gem 'faraday'
+
+gem 'rexml'
 
 gem 'octicons_helper'
 group :development, :test do
