@@ -1,5 +1,25 @@
 <p id="notice"><%= notice %></p>
 <%= @question.body %>
+<table class="table">
+  <tr>
+    <th>Answers</th>
+    <th>Correct</th>
+    <th>Actions</th>
+  </tr>
+  <% @question.answers.each do |answer| %>
+    <tr>
+      <p>
+        <td><%= answer.body %></td>
+      </p>
+      <td><%= answer.correct %></td>
+      <td>
+        <%= link_to 'Edit',  edit_admin_answer_path(answer) %>
+        <%= link_to 'Delete', admin_answer_path(answer) , method: :delete, data: { confirm: 'Are you sure?' }%>
+      </td>
+    </tr>
+  <% end %>
+</table>
 <p>
-<%= link_to 'Edit', edit_admin_question_path(@question) %> |
-<%= link_to 'Back', admin_test_questions_path(@question.test) %>
+  <%= link_to 'Edit', edit_admin_question_path(@question) %> |
+  <%= link_to 'Back', admin_test_questions_path(@question.test) %> |
+  <%= link_to 'New Answer', new_admin_question_answer_path(@question) %> |

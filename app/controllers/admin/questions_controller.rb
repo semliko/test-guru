@@ -43,7 +43,7 @@ class Admin::QuestionsController < ApplicationController
   # DELETE /questions/1 or /questions/1.json
   def destroy
     @question.destroy
-    redirect_to test_questions_url(@question.test), notice: 'Question was successfully destroyed.'
+    redirect_to admin_test_questions_url(@question.test), notice: 'Question was successfully destroyed.'
   end
 
   private
