@@ -20,7 +20,7 @@ class Admin::QuestionsController < ApplicationController
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to @question, notice: 'Question was successfully created.'
+      redirect_to admin_question_path(@question), notice: 'Question was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
