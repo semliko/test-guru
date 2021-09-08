@@ -23,14 +23,21 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    github_gist = save_gist_on_github
-    gist_url = github_gist.response['html_url']
+    flash_options = {}
 
-    if github_gist.sucess? && new_gist(github_gist.response).save!
-      flash_options = { notice: view_context.link_to(t('.success', url: gist_url), gist_url, {target: "_blank"})}
-    else
-      flash_options = { alert: t('.failure')}
+    begin
+      github_gist = save_gist_on_github
+      gist_url = github_gist.response['html_url']
+
+      if github_gist.sucess? && new_gist(github_gist.response).save!
+        flash_options = { notice: view_context.link_to(t('.success', url: gist_url), gist_url, {target: "_blank"})}
+      else
+        flash_options = { alert: t('.failure')}
+      end
+    rescue
+      flash_options = { alert: t('.failure') }
     end
+
     redirect_to @test_passage, flash_options
   end
 
