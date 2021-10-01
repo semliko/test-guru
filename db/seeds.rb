@@ -56,3 +56,5 @@ Question.where(body: 'what is Go?').first.answers << [a5, a6, a7, a8]
 Question.where(body: 'what is Ruby?').first.answers << [a9, a10, a11, a12]
 
 Question.where(body: 'what is JavaScript?').first.answers << [a13, a14, a15, a16]
+
+badge_categories = BadgeCategory.create([{name: "All Backend tests compleated"}, {name: "Test passed from the first attempt"}, {name: "Level 1 compleated"}])

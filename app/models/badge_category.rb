@@ -1,0 +1,2 @@
+class BadgeCategory < ApplicationRecord
+end
