@@ -8,21 +8,20 @@ class TestPassage < ApplicationRecord
   TEST_PASS_BENCHMARK = 85
 
   def add_badge_to_user
-    calculate_badge
     new_badges_ids = calculate_badges.map{ |b| b.id } - user.badges.ids
-    user.badeges << Badge.where(id: new_badges_ids)
+    user.badges << Badge.where(id: new_badges_ids)
   end
 
   def test_attempts
-    TestPassage.joins(:test).where('test_id = ?', test.id).where(user_id: u.id).count
+    TestPassage.joins(:test).where('test_id = ?', test.id).where(user_id: user.id).count
   end
 
   def calculate_badges
     badges = []
     if test_attempts <= 1 && success?
-      badges << Badge.where(name: "Test passed from the first attempt").first
-    elsif test.category.name == 'Backend' && test.category.tests.count == same_categiries_tests_passed.count
-      badges << Badge.where(name: "All Backend tests compleated").first
+      badges << BadgeCategory.where(name: "Test passed from the first attempt").first.badges.first
+    elsif test.category.title == 'Backend' && test.category.tests.count == same_categiries_tests_passed.count
+      badges << BadgeCategory.where(name: "All Backend tests compleated").first.badges.first
     end
     badges
   end
