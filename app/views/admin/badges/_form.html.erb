@@ -12,14 +12,9 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :category %><br>
+    <%= form.label :name %><br>
     <p>
-      <%= form.select :category, options_for_select(Badge::CATEGORIES), prompt: true, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
+      <%= form.select :name, options_for_select(Badge::CATEGORIES), prompt: true, class: "form-control" %>
   </div>
 
   <div class="form-group">
