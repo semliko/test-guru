@@ -27,7 +27,7 @@ class TestPassage < ApplicationRecord
   end
 
   def same_categories_tests_passed
-    user.test_passages.joins(:test).where(passed: true).where('tests.category_id = ?', test.category.id)
+    user.test_passages.joins(:test).where(passed: true).where('tests.category_id = ?', test.category.id).distinct
   end
 
   def update_test_passage_status
