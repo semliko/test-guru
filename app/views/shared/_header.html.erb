@@ -1,7 +1,9 @@
 
 <div class="header">
-  <%= link_to 'TestGuru', root_path %>
-  <%= link_to 'All tests list', tests_path %>
-  <%= link_to 'Badges', user_badges_path %>
-  </p>
+  <% if user_signed_in? %>
+    <%= link_to 'TestGuru', root_path %>
+    <%= link_to 'All tests list', tests_path %>
+    <%= link_to 'Badges', user_badges_path %>
+    </p>
+  <% end %>
 </div>
