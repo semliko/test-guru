@@ -20,19 +20,18 @@ class TestPassage < ApplicationRecord
     badges = []
     if test_attempts.count <= test_attempts.where(passed: true).count && success?
       badges << Badge.where(name: "Test passed from the first attempt").first
-    elsif test.category.title == 'Backend' && test.category.tests.count == same_categiries_tests_passed.count
+    elsif test.category.title == 'Backend' && test.category.tests.count == same_categories_tests_passed.count
       badges << Badge.where(name: "All Backend tests compleated").first
     end
     badges
   end
 
-  def same_categiries_tests_passed
+  def same_categories_tests_passed
     user.test_passages.joins(:test).where(passed: true).where('tests.category_id = ?', test.category.id)
   end
 
   def update_test_passage_status
-    status = success? ? true : false
-    update_attribute(:passed, status)
+    update_attribute(:passed, succes?)
   end
 
   def compleated?
