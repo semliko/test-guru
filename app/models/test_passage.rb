@@ -13,7 +13,7 @@ class TestPassage < ApplicationRecord
   end
 
   def test_attempts
-    TestPassage.joins(:test).where('test_id = ?', test.id).where(user_id: user.id)
+    TestPassage.joins(:test).where(test_id: test.id, user_id: user.id)
   end
 
   def calculate_badges
