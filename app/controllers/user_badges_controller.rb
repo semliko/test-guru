@@ -1,5 +1,5 @@
 class UserBadgesController < ApplicationController
-  before_action :set_user_badge, only: %i[ show edit update destroy ]
+  before_action :set_user_badge, only: %i[ show ]
 
   # GET /user_badges or /user_badges.json
   def index
