@@ -15,7 +15,7 @@
     <% @user_badges.each do |user_badge| %>
       <tr>
         <td><%= user_badge.category %></td>
-        <td><%= user_badge.name %></td>
+        <td><%= image_tag user_badge.image_url, style: 'height:50px;width:80px' %></td>
         <td><%= link_to 'Show', user_badge %></td>
       </tr>
     <% end %>

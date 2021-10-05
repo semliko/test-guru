@@ -38,6 +38,7 @@ ru:
       index:
         header: "Доступные тесты"
         optional_header: "Пройти тест"
+        manage_badges: "Беджи"
       form_inline:
         submit: "OK"
 
