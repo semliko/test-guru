@@ -16,8 +16,4 @@ class UserBadgesController < ApplicationController
     @user_badge = UserBadge.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
-  def user_badge_params
-    params.require(:user_badge).permit(:user_id, :badge_id)
-  end
 end
