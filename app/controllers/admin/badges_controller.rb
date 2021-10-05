@@ -33,7 +33,7 @@ class Admin::BadgesController < ApplicationController
   # PATCH/PUT /badges/1 or /badges/1.json
   def update
     if @badge.update(badge_params)
-      redirect_to @badge, notice: "Badge was successfully updated."
+      redirect_to admin_badge_path(@badge), notice: "Badge was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

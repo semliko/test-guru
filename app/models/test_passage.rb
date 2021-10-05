@@ -19,9 +19,9 @@ class TestPassage < ApplicationRecord
   def calculate_badges
     badges = []
     if test_attempts <= 1 && success?
-      badges << Badge.where(name: "Test passed from the first attempt").first.badges.first
+      badges << Badge.where(name: "Test passed from the first attempt").first
     elsif test.category.title == 'Backend' && test.category.tests.count == same_categiries_tests_passed.count
-      badges << Badge.where(name: "All Backend tests compleated").first.badges.first
+      badges << Badge.where(name: "All Backend tests compleated").first
     end
     badges
   end
