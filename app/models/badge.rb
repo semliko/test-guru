@@ -4,4 +4,6 @@ class Badge < ApplicationRecord
   validates :image_url, format: URI::regexp(%w[http https])
 
   CATEGORIES = ["All Backend tests compleated", "Test passed from the first attempt", "Level 1 compleated" ]
+
+
 end
