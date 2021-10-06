@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :badges
   end
+
   resources :user_badges, only: [:index]
-  #namespace :admin do
-  #  resources :badges
-  #end
+
   resources :contacts, only: [:new, :create, :show, :index] do
     get 'contacts', to: 'contacts#new'
   end
