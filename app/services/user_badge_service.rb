@@ -7,30 +7,36 @@ class UserBadgeService
   end
 
   def call
-    add_badge_to_user
+    Badge.all.each do |badge|
+      @user.badges << badge if send("#{badge.rule}_award?", badge_value )
+    end
   end
 
-  def add_badge_to_user
-    new_badges_ids = calculate_badges.map{ |b| b.id }
-    @user.badges << Badge.where(id: new_badges_ids)
-  end
-
-  def calculate_badges
-    Badge.select{|badge| can_be_added_to_user?(badge)}
-  end
-
-  def can_be_added_to_user? (badge)
-    [
-      passed_from_first_attempt? && badge.name == "Test passed from the first attempt",
-      all_backend_tests_completed? && badge.name == "All Backend tests compleated"
-    ].include?(true)
+  def badge_value
+    {
+      passed_from_first_attempt: passed_from_first_attempt?,
+      all_backend_tests_completed: all_backend_tests_completed?
+    }
   end
 
   def passed_from_first_attempt?
-    @test_passage.test_attempts.count <= 1 && @test_passage.success?
+    @test_passage.test_attempts.count <= 1 && @test_passage.passed
   end
 
   def all_backend_tests_completed?
     @test.category.title == 'Backend' && @test.category.test.count == @test_passage.same_categories_tests_passed.count
   end
+
+  def all_backend_tests_completed_award?(badge_value)
+    badge_value[:all_backend_tests_completed]
+  end
+
+  def passed_from_first_attempt_award?(badge_value)
+    badge_value[:passed_from_first_attempt]
+  end
+
+  def level_compleated_award?(badge_value)
+    badge_value[:level_compleated]
+  end
+
 end

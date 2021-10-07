@@ -5,5 +5,15 @@ class Badge < ApplicationRecord
 
   CATEGORIES = ["All Backend tests compleated", "Test passed from the first attempt", "Level 1 compleated" ]
 
+  def rule
+    case name
+    when CATEGORIES[0]
+      "all_backend_tests_completed"
+    when CATEGORIES[1]
+      "passed_from_first_attempt"
+    when CATEGORIES[2]
+      "level_compleated"
+    end
+  end
 
 end
