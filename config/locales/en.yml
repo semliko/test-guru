@@ -67,6 +67,7 @@ en:
       index:
         header: "Tricky Tests"
         optional_header: "Take a test"
+        manage_badges: "Badges"
       form_inline:
         submit: "OK"
 

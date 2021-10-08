@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :badges
+  end
+
+  resources :user_badges, only: [:index]
+
   resources :contacts, only: [:new, :create, :show, :index] do
     get 'contacts', to: 'contacts#new'
   end
@@ -24,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :badges
     get 'gists', to: 'gists#index'
     resources :tests do
       patch :update_inline, on: :member

@@ -7,6 +7,18 @@ class TestPassage < ApplicationRecord
 
   TEST_PASS_BENCHMARK = 85
 
+  def test_attempts
+    TestPassage.joins(:test).where(test_id: test.id, user_id: user.id)
+  end
+
+  def same_categories_tests_passed
+    user.test_passages.joins(:test).where(passed: true).where('tests.category_id = ?', test.category.id).distinct
+  end
+
+  def update_test_passage_status
+    update_attribute(:passed, success?)
+  end
+
   def compleated?
     current_question.nil?
   end
