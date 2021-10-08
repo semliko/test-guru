@@ -16,4 +16,15 @@ class Badge < ApplicationRecord
     end
   end
 
+  def all_backend_tests_completed_award?(badge_value)
+    badge_value[:all_backend_tests_completed]
+  end
+
+  def passed_from_first_attempt_award?(badge_value)
+    badge_value[:passed_from_first_attempt]
+  end
+
+  def level_compleated_award?(badge_value)
+    badge_value[:level_compleated]
+  end
 end

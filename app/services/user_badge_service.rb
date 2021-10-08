@@ -8,7 +8,7 @@ class UserBadgeService
 
   def call
     Badge.all.each do |badge|
-      @user.badges << badge if send("#{badge.rule}_award?", badge_value )
+      @user.badges << badge if badge.send("#{badge.rule}_award?", badge_value )
     end
   end
 
@@ -27,16 +27,5 @@ class UserBadgeService
     @test.category.title == 'Backend' && @test.category.test.count == @test_passage.same_categories_tests_passed.count
   end
 
-  def all_backend_tests_completed_award?(badge_value)
-    badge_value[:all_backend_tests_completed]
-  end
-
-  def passed_from_first_attempt_award?(badge_value)
-    badge_value[:passed_from_first_attempt]
-  end
-
-  def level_compleated_award?(badge_value)
-    badge_value[:level_compleated]
-  end
 
 end
