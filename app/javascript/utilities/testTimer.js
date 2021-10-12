@@ -32,6 +32,7 @@ function countDownTime(deadline) {
     if (distance < 0) {
       clearInterval(x);
       document.getElementById("time-count").innerHTML = "Time is over";
+      document.getElementById("test_passage_form").submit();
     }
   }, 1000);
 }

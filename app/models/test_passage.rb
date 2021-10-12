@@ -43,7 +43,20 @@ class TestPassage < ApplicationRecord
   end
 
   def passed_on_time?
-    compleated? ? end_time <= deadline_time : Time.now <= deadline_time
+    compleated? && end_time <= deadline_time
+  end
+
+  def expired?
+    !(Time.now <= deadline_time)
+  end
+
+  def is_over?
+    compleated? || expired?
+  end
+
+  def finalize_test
+    set_finish_time
+    update_test_passage_status
   end
 
   def calculate_deadline_time

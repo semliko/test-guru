@@ -14,9 +14,8 @@ class TestPassagesController < ApplicationController
   def update
     @test_passage.accept!(params[:answer_ids])
 
-    if @test_passage.compleated?
-      @test_passage.set_finish_time
-      @test_passage.update_test_passage_status
+    if @test_passage.is_over?
+      @test_passage.finalize_test
       UserBadgeService.new(@test_passage.id).call
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
