@@ -16,7 +16,7 @@ module TestGuru
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = 'London'
+    config.time_zone = 'London'
     config.i18n.default_locale = :ru
     # config.i18n.available_locales = [:en, :ru]
     # config.eager_load_paths << Rails.root.join("extras")

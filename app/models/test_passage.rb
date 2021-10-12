@@ -19,6 +19,14 @@ class TestPassage < ApplicationRecord
     update_attribute(:passed, success?)
   end
 
+  def set_finish_time
+    update_attribute(:end_time, Time.now)
+  end
+
+  def set_deadline_time
+    update_attribute(:deadline_time, calculate_deadline_time)
+  end
+
   def compleated?
     current_question.nil?
   end
@@ -31,7 +39,15 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    correct_answers_percentage >= TEST_PASS_BENCHMARK
+    correct_answers_percentage >= TEST_PASS_BENCHMARK && passed_on_time?
+  end
+
+  def passed_on_time?
+    compleated? ? end_time <= deadline_time : Time.now <= deadline_time
+  end
+
+  def calculate_deadline_time
+    Time.at(start_time) + test.duration_to_seconds
   end
 
   def correct_answers_percentage

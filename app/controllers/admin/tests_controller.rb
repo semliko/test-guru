@@ -73,6 +73,6 @@ class Admin::TestsController < Admin::BaseController
 
   # Only allow a list  trusted parameters through.
   def test_params
-    params.require(:test).permit(:title, :level, :category_id)
+    params.require(:test).permit(:title, :level, :category_id, :duration)
   end
 end

@@ -19,6 +19,9 @@ class Test < ApplicationRecord
     Answer.joins(:question).where('test_id = ?', id).where(correct: true)
   end
 
+  def duration_to_seconds
+    Time.parse(duration).seconds_since_midnight
+  end
 
   class << self
     def titles_by_category(category_title)

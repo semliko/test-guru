@@ -15,6 +15,7 @@ require("utilities/sorting");
 require("utilities/passwordChecker");
 require("utilities/form_inline");
 require("utilities/progress");
+require("utilities/testTimer");
 
 Rails.start();
 Turbolinks.start();
