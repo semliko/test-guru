@@ -19,14 +19,6 @@ class TestPassage < ApplicationRecord
     update_attribute(:passed, success?)
   end
 
-  def set_finish_time
-    update_attribute(:end_time, Time.now)
-  end
-
-  def set_deadline_time
-    update_attribute(:deadline_time, calculate_deadline_time)
-  end
-
   def compleated?
     current_question.nil?
   end
@@ -43,7 +35,7 @@ class TestPassage < ApplicationRecord
   end
 
   def passed_on_time?
-    compleated? && end_time <= deadline_time
+    compleated? && Time.now <= deadline_time
   end
 
   def expired?
@@ -54,13 +46,8 @@ class TestPassage < ApplicationRecord
     compleated? || expired?
   end
 
-  def finalize_test
-    set_finish_time
-    update_test_passage_status
-  end
-
-  def calculate_deadline_time
-    Time.at(start_time) + test.duration_to_seconds
+  def deadline_time
+    created_at + test.duration
   end
 
   def correct_answers_percentage

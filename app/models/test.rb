@@ -14,13 +14,14 @@ class Test < ApplicationRecord
   }
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  before_validation :convert_duration_to_seconds
 
   def correct_answers
     Answer.joins(:question).where('test_id = ?', id).where(correct: true)
   end
 
-  def duration_to_seconds
-    Time.parse(duration).seconds_since_midnight
+  def convert_duration_to_seconds
+    self.duration = Time.parse(duration).seconds_since_midnight
   end
 
   class << self

@@ -10,7 +10,6 @@ class TestsController < ApplicationController
   def start
     current_user.tests.push(@test)
     test_passage = current_user.test_passage(@test)
-    test_passage.set_deadline_time
     if @test.questions.any?
       redirect_to test_passage
     else
