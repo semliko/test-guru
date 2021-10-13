@@ -3,10 +3,19 @@
   <%= content_tag :div, @test_passage.progress, class: 'progress', data: { current_progress: @test_passage.progress } do  %>
     <div class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100"></div>
   <% end %>
+</p>
+
+<p>
+  <%= content_tag :div, class: 'timer', data: { deadline: @test_passage.deadline_time.httpdate } do  %>
+    <div id="time-count"></div>
+  <% end %>
+</p>
+
+<p>
   <%= @test_passage.current_question.body %>
 </p>
 
-<%= form_with url: test_passage_path(@test_passage), method: :put, local: true  do |form| %>
+<%= form_with url: test_passage_path(@test_passage), method: :put, local: true, id: "test_passage_form"  do |form| %>
   <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
     <p>
       <%= b.check_box id: "answer_ids_#{b.object.id}",  include_hidden: false %>
@@ -14,5 +23,5 @@
     </p>
   <% end %>
   <p><%= link_to 'Gist Questions', gist_test_passage_path(@test_passage), method: :post %></p>
-  <p><%= form.submit 'Next' %></p>
+  <p><%= form.submit 'Next', class: "btn btn-primary", id: "submit-button" %></p>
 <% end %>

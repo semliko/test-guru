@@ -20,7 +20,7 @@ class TestPassage < ApplicationRecord
   end
 
   def compleated?
-    current_question.nil?
+    current_question.nil? || expired?
   end
 
   def accept!(answer_ids)
@@ -31,7 +31,19 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    correct_answers_percentage >= TEST_PASS_BENCHMARK
+    correct_answers_percentage >= TEST_PASS_BENCHMARK && !expired?
+  end
+
+  def expired?
+    time_left.negative?
+  end
+
+  def time_left
+    deadline_time.to_i - Time.now.to_i
+  end
+
+  def deadline_time
+    created_at + test.duration
   end
 
   def correct_answers_percentage

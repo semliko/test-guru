@@ -15,6 +15,11 @@
       <p>
         <%= form.number_field :level, id: :test_level%>
     </div>
+    <div>
+      <%= form.label :duration %>
+      <p>
+        <%= form.time_field :duration, value: "%H:%M" %>
+    </div>
     <% if test.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(test.errors.count, "error") %> prohibited this test from being saved:</h2>
