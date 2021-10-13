@@ -9,9 +9,8 @@ class TestsController < ApplicationController
 
   def start
     current_user.tests.push(@test)
-    test_passage = current_user.test_passage(@test)
     if @test.questions.any?
-      redirect_to test_passage
+      redirect_to current_user.test_passage(@test)
     else
       redirect_to tests_path
     end
